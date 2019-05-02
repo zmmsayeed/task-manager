@@ -50,9 +50,7 @@ class TodoList extends Component {
     }
 
     showAll(e) {
-        var newIt = {
-            
-        }
+        
     }
 
     render() {
