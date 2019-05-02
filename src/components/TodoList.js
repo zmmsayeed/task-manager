@@ -11,7 +11,7 @@ class TodoList extends Component {
         super(props);
 
         var today = new Date();
-        var presentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var presentTime = today.getHours() + ":" + today.getMinutes();
 
         this.state = {
             items: [],
@@ -19,10 +19,14 @@ class TodoList extends Component {
         }
 
         this.addItem = this.addItem.bind(this);
+        this.showAll = this.showUpcoming.bind(this);
     }
 
     addItem(e) {
         e.preventDefault();
+
+        var selectedTime = this._inputElement4.value;
+        console.log(selectedTime);
 
         if(this._inputElement.value !== "") {
             var newItem = {
@@ -47,10 +51,27 @@ class TodoList extends Component {
 
         console.log(this.state.items);
         console.log(this.state.presentTime);
+        // console.log(selectedTime);
     }
 
-    showAll(e) {
-        
+    showUpcoming(e) {
+        e.preventDefault();
+
+        // var filteredItems = this.state.items.filter(function(item) {
+        //     return (item.time > this.state.presentDate)
+        // });
+
+        var filteredItems = this.state.items.filter(item => {
+            return (item.time > this.state.presentDate)
+        });
+
+        // var filteredItems = this.state.items;
+        console.log(filteredItems);
+
+
+        // this.setState( {
+        //     items:filteredItems
+        // });
     }
 
     render() {
@@ -75,22 +96,30 @@ class TodoList extends Component {
                             </div>
 
                             <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <input ref={ (c) => this._inputElement3 = c } type="date" className="form-control" id="inputEmail4" placeholder="Date:  " required/>
+                                <div className="form-group col-md-6">                                    
+                                    <input ref={ (c) => this._inputElement3 = c } 
+                                           onChange={(c) => { this.setState({selectedDate: c.target.value})}} 
+                                           type="date" className="form-control" 
+                                           id="inputEmail4" placeholder="Date:" required/>
                                 </div>
 
                                 <div className="form-group col-md-6">
-                                    <input ref={ (d) => this._inputElement4 = d } type="time" className="form-control" id="inputPassword4" placeholder="Time:  " required/>
+                                    <input ref={ (d) => this._inputElement4 = d } 
+                                           onChange={(d) => { this.setState({selectedDate: d.target.value})}}
+                                           type="time" className="form-control" 
+                                           id="time" placeholder="Time:  " required/>
                                 </div>
                             </div>
 
                             <button className="btn btn-lg btn-outline-dark col-sm-12 btn-task-create" type="submit">Create Task</button>
+                            
+                            <hr className="lastHr" />
                         </form>
                     </div>
 
                     <div className="col-md-4 offset-md-2 taskbar">
-                        <button className="btn btn-outline-dark col-md-5 text-center" onClick={showUpcoming}>Upcoming</button>
-                        <button className="btn btn-outline-dark offset-md-2 col-md-5 text-center" onClick={showAll}>All</button>
+                        <button className="btn btn-outline-dark col-md-5 col-sm-12 text-center">Upcoming</button>
+                        <button className="btn btn-outline-dark offset-md-2 col-md-5 col-sm-12 text-center" onClick={this.showUpcoming}>All</button>
 
                         <TodoItems entries={this.state.items} />
                     </div>

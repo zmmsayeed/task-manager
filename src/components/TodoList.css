@@ -2,7 +2,28 @@
     padding-top: 3%;
     border-left: 1px solid lightgray;
     height: 90vh;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.taskbar::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.taskbar::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+
+@media only screen and (max-width: 600px) {
+    .taskbar {
+        height: auto;
+        border: 0;
+        padding-top: 2%;
+        overflow: hidden;
+    }
 }
 
 .taskeditor {
@@ -43,3 +64,19 @@ input[type="time"]:valid:before {
     border-radius: 5px;
     list-style: none;
 }
+
+.lastHr {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .lastHr {
+        display: block;
+    }
+
+    .btn {
+        margin-top: 15px;
+    }
+}
+
+
