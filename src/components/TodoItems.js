@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import './TodoItems.css';
  
 class TodoItems extends Component {
     createTasks(item) {
-    return <li key={item.key}>{item.text}</li>
+    return <li key={item.key}>{item.text} 
+               <span className="tasktime">{item.time}</span>
+               <span className="taskDesc">{ item.description }</span>
+            </li>
     }
 
     render() {

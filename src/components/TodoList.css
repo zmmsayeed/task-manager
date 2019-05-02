@@ -2,6 +2,7 @@
     padding-top: 3%;
     border-left: 1px solid lightgray;
     height: 90vh;
+    overflow: scroll;
 }
 
 .taskeditor {

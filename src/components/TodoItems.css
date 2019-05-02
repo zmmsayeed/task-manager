@@ -1,0 +1,10 @@
+.tasktime {
+    float: right;
+}
+
+.taskDesc {
+    display: block;
+    width: 100%;
+    font-size: 0.7em;
+    color: gray;
+}
