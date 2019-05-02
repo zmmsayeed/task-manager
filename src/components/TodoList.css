@@ -1,0 +1,44 @@
+.taskbar {
+    padding-top: 3%;
+    border-left: 1px solid lightgray;
+    height: 90vh;
+}
+
+.taskeditor {
+    height: 100vh;
+}
+
+h1 {
+    margin-top: 15%;
+    margin-bottom: 25%;
+}
+
+input[type="date"]:before,
+input[type="time"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before,
+input[type="time"]:focus:before,
+input[type="time"]:valid:before {
+    content: "";
+}
+
+.theList {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+} 
+
+.theList li {
+    color: black;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    list-style: none;
+}
