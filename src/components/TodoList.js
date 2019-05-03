@@ -58,16 +58,17 @@ class TodoList extends Component {
             this._inputElement4.value = "";            
         }
 
+        // console.log(this.origItems);
         // console.log(this.state.items);
         // console.log(this.state.selectedTime);
     }
 
-    showUpcoming = (e) => {
+    showUpcoming = async function(e) {
         e.preventDefault();
 
         var today = new Date();
         var presentTime = today.getHours() + ":" + today.getMinutes();
-        console.log(presentTime);
+        // console.log(presentTime);
 
         var filteredItems = [];
         this.state.items.map(item => {
@@ -78,21 +79,18 @@ class TodoList extends Component {
         });
 
 
-        this.setState( {
+        await this.setState( {
             items:filteredItems
         });
-
-        var items = this.state.items;
-        console.log(items);
     }
 
-    showAll = (e) => {
+    showAll = async function(e) {
         e.preventDefault();
 
-        var items = this.origItems;
+        var items1 = this.origItems;
 
-        this.setState( {
-            items: items
+        await this.setState( {
+            items: items1
         });
     }
 
