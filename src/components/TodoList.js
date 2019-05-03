@@ -16,6 +16,7 @@ class TodoList extends Component {
         this.state = {
             items: [],
             presentTime: presentTime,
+            selectedDate: "DD:MM:YYYY",
             selectedTime: "00:00"
         }
 
@@ -35,7 +36,7 @@ class TodoList extends Component {
                 key: Date.now(),
                 description: this._inputElement1.value,
                 date: this._inputElement3.value,
-                time: this._inputElement4.value
+                time: this.state.selectedTime
             };
 
             this.setState((prevState) => {
