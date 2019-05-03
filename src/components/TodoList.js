@@ -35,7 +35,7 @@ class TodoList extends Component {
                 text: this._inputElement.value,
                 key: Date.now(),
                 description: this._inputElement1.value,
-                date: this._inputElement3.value,
+                date: this.state.selectedDate,
                 time: this.state.selectedTime
             };
 
@@ -63,8 +63,11 @@ class TodoList extends Component {
         //     return (item.time > this.state.presentDate)
         // });
 
-        var filteredItems = this.state.items.filter(item => {
-            return (item.time > this.state.presentDate)
+        var today = new Date();
+        var presentTime = toString(today.getHours() + ":" + today.getMinutes());
+
+        var filteredItems = this.state.items.filter(function(item) {
+            return (item.time > presentTime)
         });
 
         // var filteredItems = this.state.items;
