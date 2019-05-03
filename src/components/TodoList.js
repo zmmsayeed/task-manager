@@ -10,12 +10,10 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
 
-        // var today = new Date();
-        // var presentTime = today.getHours() + ":" + today.getMinutes();
+        this.origItems = [];
 
         this.state = {
             items: [],
-            // presentTime: presentTime,
             selectedDate: "DD:MM:YYYY",
             selectedTime: "00:00"
         }
@@ -24,7 +22,8 @@ class TodoList extends Component {
         this.showUpcoming = this.showUpcoming.bind(this);
     }
 
-    addItem(e) {
+
+    addItem = async function(e) {
         e.preventDefault();
 
         var selectedTime = this._inputElement4.value;
@@ -39,21 +38,28 @@ class TodoList extends Component {
                 time: this.state.selectedTime
             };
 
-            this.setState((prevState) => {
+            await this.setState((prevState) => { 
                 return {
                     items: prevState.items.concat(newItem)
-                };
+                }
             });
-    
+
+            // this.setState((prevState) => {
+            //     return {
+            //         items: prevState.items.concat(newItem)
+            //     };
+            // });
+
+
+            this.origItems = this.state.items;
             this._inputElement.value = "";
             this._inputElement1.value = "";
             this._inputElement3.value = "";            
             this._inputElement4.value = "";            
         }
 
-        console.log(this.state.items);
-        // console.log(this.state.presentTime);
-        console.log(this.state.selectedTime);
+        // console.log(this.state.items);
+        // console.log(this.state.selectedTime);
     }
 
     showUpcoming = (e) => {
@@ -76,7 +82,18 @@ class TodoList extends Component {
             items:filteredItems
         });
 
-        console.log(filteredItems);
+        var items = this.state.items;
+        console.log(items);
+    }
+
+    showAll = (e) => {
+        e.preventDefault();
+
+        var items = this.origItems;
+
+        this.setState( {
+            items: items
+        });
     }
 
     render() {
@@ -123,7 +140,7 @@ class TodoList extends Component {
                     </div>
 
                     <div className="col-md-4 offset-md-2 taskbar">
-                        <button className="btn btn-outline-dark col-md-5 col-sm-12 text-center">All</button>
+                        <button className="btn btn-outline-dark col-md-5 col-sm-12 text-center" onClick={this.showAll}>All</button>
                         <button className="btn btn-outline-dark offset-md-2 col-md-5 col-sm-12 text-center" onClick={this.showUpcoming}>Upcoming</button>
 
                         <TodoItems entries={this.state.items} />
