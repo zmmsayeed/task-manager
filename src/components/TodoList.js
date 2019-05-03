@@ -15,7 +15,8 @@ class TodoList extends Component {
 
         this.state = {
             items: [],
-            presentTime: presentTime
+            presentTime: presentTime,
+            selectedTime: "00:00"
         }
 
         this.addItem = this.addItem.bind(this);
@@ -105,7 +106,7 @@ class TodoList extends Component {
 
                                 <div className="form-group col-md-6">
                                     <input ref={ (d) => this._inputElement4 = d } 
-                                           onChange={(d) => { this.setState({selectedDate: d.target.value})}}
+                                           onChange={(d) => { this.setState({selectedTime: d.target.value})}}
                                            type="time" className="form-control" 
                                            id="time" placeholder="Time:  " required/>
                                 </div>
