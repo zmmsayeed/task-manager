@@ -64,7 +64,7 @@ class TodoList extends Component {
         // console.log(this.state.selectedTime);
     }
 
-    showUpcoming = async function(e) {
+    showUpcoming = async(e) => {
         e.preventDefault();
 
         var today = new Date();
