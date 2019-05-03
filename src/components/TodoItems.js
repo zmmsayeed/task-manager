@@ -5,7 +5,8 @@ class TodoItems extends Component {
     createTasks(item) {
     return <li key={item.key}>{item.text} 
                <span className="tasktime">{item.time}</span>
-               <span className="taskDesc">{ item.description }</span>
+               <span className="taskDesc"><b>Description:</b> { item.description }</span>
+               <span className="taskDate">{ item.date }</span>
             </li>
     }
 

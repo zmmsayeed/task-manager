@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TodoItems from './TodoItems';
-import moment from 'moment';
+// import moment from 'moment';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './TodoList.css';
@@ -68,15 +68,36 @@ class TodoList extends Component {
         e.preventDefault();
 
         var today = new Date();
-        var presentTime = today.getHours() + ":" + today.getMinutes();
+
+        var hours = today.getHours();
+        if(hours<10) {
+            hours = "0"+hours;
+        }
+        var minutes = today.getMinutes();
+        if(minutes<10) {
+            minutes = "0"+hours;
+        }
+        var presentTime = hours + ":" + minutes;
         // console.log(presentTime);
 
-        var presentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-        // console.log(presentDate);
+        var month = (today.getMonth()+1)
+        if(month<10){
+            month = "0"+month
+        }
+        var day = today.getDate()
+        if(day<10){
+            day = "0"+day
+        }
+        var presentDate = today.getFullYear() + "-" + month + "-" + day;
+        console.log(presentDate)
+
+        // var presentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+        // // console.log(presentDate);
 
         var filteredItems = [];
         this.state.items.map(item => {
-            if(moment.parseZone(item.date).isAfter(presentDate) || item.time > presentTime) {
+            // if(moment.parseZone(item.date).isAfter(presentDate) || item.time > presentTime) {
+            if(item.date > presentDate || item.time > presentTime) {
                 filteredItems.push(item);
             }
             return filteredItems;
