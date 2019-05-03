@@ -70,14 +70,16 @@ class TodoList extends Component {
         var presentTime = today.getHours() + ":" + today.getMinutes();
         // console.log(presentTime);
 
+        var presentDate = today.getFullYear() + "-" + today.getMonth()+1 + "-" + today.getDate();
+
         var filteredItems = [];
         this.state.items.map(item => {
-            if(item.time > presentTime) {
+            if(item.date > presentDate || item.time > presentTime) {
                 filteredItems.push(item);
             }
             return filteredItems;
         });
-
+        
 
         await this.setState( {
             items:filteredItems
