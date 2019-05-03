@@ -63,36 +63,18 @@ class TodoList extends Component {
         var presentTime = today.getHours() + ":" + today.getMinutes();
         console.log(presentTime);
 
-        // var filteredItems = this.state.items.filter(function(item) {
-        //     return (item.time > this.state.presentDate)
-        // });
-
-        // var filteredItems = this.state.items.filter(function(item) {
-        //     return (item.time > presentTime)
-        // });
-
-        // var filteredItems = [];
-        // this.state.items.filter(function(item) {
-        //     // return (item.time > presentTime)
-        //     filteredItems.push(item);
-        //     return filteredItems;            
-        // });
-
         var filteredItems = [];
         this.state.items.map(item => {
             if(item.time > presentTime) {
                 filteredItems.push(item);
             }
             return filteredItems;
-        })
-
-        // var filteredItems = this.state.items;
-        // console.log(filteredItems);
+        });
 
 
-        // this.setState( {
-        //     items:filteredItems
-        // });
+        this.setState( {
+            items:filteredItems
+        });
 
         console.log(filteredItems);
     }
