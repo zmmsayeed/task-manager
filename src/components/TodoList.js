@@ -123,8 +123,8 @@ class TodoList extends Component {
                     </div>
 
                     <div className="col-md-4 offset-md-2 taskbar">
-                        <button className="btn btn-outline-dark col-md-5 col-sm-12 text-center">Upcoming</button>
-                        <button className="btn btn-outline-dark offset-md-2 col-md-5 col-sm-12 text-center" onClick={this.showUpcoming}>All</button>
+                        <button className="btn btn-outline-dark col-md-5 col-sm-12 text-center">All</button>
+                        <button className="btn btn-outline-dark offset-md-2 col-md-5 col-sm-12 text-center" onClick={this.showUpcoming}>Upcoming</button>
 
                         <TodoItems entries={this.state.items} />
                     </div>
