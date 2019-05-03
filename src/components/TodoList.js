@@ -82,7 +82,7 @@ class TodoList extends Component {
             day = "0"+day
         }
         var presentDate = today.getFullYear() + "-" + month + "-" + day;
-        console.log(presentDate)
+        // console.log(presentDate)
 
         var filteredItems = [];
         this.state.items.map(item => {
