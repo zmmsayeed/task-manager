@@ -52,7 +52,7 @@ class TodoList extends Component {
 
         console.log(this.state.items);
         console.log(this.state.presentTime);
-        // console.log(selectedTime);
+        console.log(this.state.selectedTime);
     }
 
     showUpcoming(e) {
