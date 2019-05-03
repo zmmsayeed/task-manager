@@ -21,7 +21,7 @@ class TodoList extends Component {
         }
 
         this.addItem = this.addItem.bind(this);
-        this.showAll = this.showUpcoming.bind(this);
+        this.showUpcoming = this.showUpcoming.bind(this);
     }
 
     addItem(e) {
