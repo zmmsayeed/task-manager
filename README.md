@@ -1,7 +1,9 @@
 To get this project working follow the following steps:
+```
   1. git clone <url of the project>
-  2. npm install --save bootstrap jquery popper
+  2. npm install
   3. npm start
+```
 
 
 
