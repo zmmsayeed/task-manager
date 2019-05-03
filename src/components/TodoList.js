@@ -10,12 +10,12 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
 
-        var today = new Date();
-        var presentTime = today.getHours() + ":" + today.getMinutes();
+        // var today = new Date();
+        // var presentTime = today.getHours() + ":" + today.getMinutes();
 
         this.state = {
             items: [],
-            presentTime: presentTime,
+            // presentTime: presentTime,
             selectedDate: "DD:MM:YYYY",
             selectedTime: "00:00"
         }
@@ -52,31 +52,49 @@ class TodoList extends Component {
         }
 
         console.log(this.state.items);
-        console.log(this.state.presentTime);
+        // console.log(this.state.presentTime);
         console.log(this.state.selectedTime);
     }
 
-    showUpcoming(e) {
+    showUpcoming = (e) => {
         e.preventDefault();
+
+        var today = new Date();
+        var presentTime = today.getHours() + ":" + today.getMinutes();
+        console.log(presentTime);
 
         // var filteredItems = this.state.items.filter(function(item) {
         //     return (item.time > this.state.presentDate)
         // });
 
-        var today = new Date();
-        var presentTime = toString(today.getHours() + ":" + today.getMinutes());
+        // var filteredItems = this.state.items.filter(function(item) {
+        //     return (item.time > presentTime)
+        // });
 
-        var filteredItems = this.state.items.filter(function(item) {
-            return (item.time > presentTime)
-        });
+        // var filteredItems = [];
+        // this.state.items.filter(function(item) {
+        //     // return (item.time > presentTime)
+        //     filteredItems.push(item);
+        //     return filteredItems;            
+        // });
+
+        var filteredItems = [];
+        this.state.items.map(item => {
+            if(item.time > presentTime) {
+                filteredItems.push(item);
+            }
+            return filteredItems;
+        })
 
         // var filteredItems = this.state.items;
-        console.log(filteredItems);
+        // console.log(filteredItems);
 
 
         // this.setState( {
         //     items:filteredItems
         // });
+
+        console.log(filteredItems);
     }
 
     render() {
