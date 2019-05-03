@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItems from './TodoItems';
+import moment from 'moment';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './TodoList.css';
@@ -70,11 +71,12 @@ class TodoList extends Component {
         var presentTime = today.getHours() + ":" + today.getMinutes();
         // console.log(presentTime);
 
-        var presentDate = today.getFullYear() + "-" + today.getMonth()+1 + "-" + today.getDate();
+        var presentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+        // console.log(presentDate);
 
         var filteredItems = [];
         this.state.items.map(item => {
-            if(item.date > presentDate || item.time > presentTime) {
+            if(moment.parseZone(item.date).isAfter(presentDate) || item.time > presentTime) {
                 filteredItems.push(item);
             }
             return filteredItems;
@@ -86,13 +88,11 @@ class TodoList extends Component {
         });
     }
 
-    showAll = async function(e) {
+    showAll = async(e)=> {
         e.preventDefault();
 
-        var items1 = this.origItems;
-
         await this.setState( {
-            items: items1
+            items: this.origItems
         });
     }
 
