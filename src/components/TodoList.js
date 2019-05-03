@@ -45,13 +45,6 @@ class TodoList extends Component {
                 }
             });
 
-            // this.setState((prevState) => {
-            //     return {
-            //         items: prevState.items.concat(newItem)
-            //     };
-            // });
-
-
             this.origItems = this.state.items;
             this._inputElement.value = "";
             this._inputElement1.value = "";
@@ -90,9 +83,6 @@ class TodoList extends Component {
         }
         var presentDate = today.getFullYear() + "-" + month + "-" + day;
         console.log(presentDate)
-
-        // var presentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-        // // console.log(presentDate);
 
         var filteredItems = [];
         this.state.items.map(item => {
